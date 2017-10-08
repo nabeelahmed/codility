@@ -12,10 +12,11 @@ def permissingelem(A):
             return sorted_A[index] + 1
 
 if __name__ == "__main__":
-    # A = [2, 3, 1, 5]
-    A = [2, 3, 1, 5, 6, 7, 8, 9, 10, 4, 12]
-    # A = [2, 3, 1, 5, 6, 7, 8, 9, 10, 4, 12]  # 11 is missing
-    A = [2, 3, 1, 5, 6, 7, 8, 9, 10, 4, 11]  # 12 - last elem is missing
-    A = [2, 3, 12, 5, 6, 7, 8, 9, 10, 4, 11]  # 1 - first elem is missing
-    # A = [2, 3, 1, 5]
-    print permissingelem(A)
+    A = [
+            [2, 3, 1, 5],
+            [2, 3, 1, 5, 6, 7, 8, 9, 10, 4, 12],  # 11 is missing
+            [2, 3, 1, 5, 6, 7, 8, 9, 10, 4, 11],  # 12 - last elem is missing
+            [2, 3, 12, 5, 6, 7, 8, 9, 10, 4, 11]  # 1 - first elem is missing
+    ]
+    for example in A:
+        print "missing element --> ", permissingelem(example)
