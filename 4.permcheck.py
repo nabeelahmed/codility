@@ -1,21 +1,64 @@
 
 
-def permcheck(A):
-    sorted_A = sorted(A)
-    for index, elem in enumerate(sorted_A[:-1]):
-        # if index+1 < len(sorted_A):
-            if not sorted_A[index+1] - sorted_A[index] == 1:
-                return 0
-            else:
-                pass
-        # else:  # last element
-        #     if not sorted_A[index] - sorted_A[index-1] == 1:
-        #         print sorted_A[index]
-        #         return 0
-    return 1
+
+def perm_check(num_list):
+    """
+    A non-empty zero-indexed array A consisting of N integers is given.
+    A permutation is a sequence containing each element from 1 to N once, and only once.
+
+    For example, array A such that:
+
+    A[0] = 4 A[1] = 1 A[2] = 3 A[3] = 2
+    is a permutation, but array A such that:
+
+    A[0] = 4 A[1] = 1 A[2] = 3
+    is not a permutation, because value 2 is missing.
+
+    The goal is to check whether array A is a permutation.
+
+    Write a function:
+
+    def solution(A)
+    that, given a zero-indexed array A, returns 1 if array A is a permutation and 0 if it is not.
+
+    For example, given array A such that:
+
+    A[0] = 4 A[1] = 1 A[2] = 3 A[3] = 2
+    the function should return 1.
+
+    Given array A such that:
+
+    A[0] = 4 A[1] = 1 A[2] = 3
+    the function should return 0.
+
+    Assume that:
+
+        * N is an integer within the range [1..100,000];
+        * each element of array A is an integer within the range [1..1,000,000,000].
+
+    Complexity:
+
+        * expected worst-case time complexity is O(N);
+        * expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
+
+    Elements of input arrays can be modified.
+
+    """
+    sorted_list = sorted(num_list)
+    if sorted_list[0] != 1:
+        return 0  # not a permutation
+    for index, elem in enumerate(sorted_list[:-1]):  # exclude the last element
+        if not sorted_list[index+1] - sorted_list[index] == 1:
+            return 0  # not a permutation
+    return 1  # a permutation
 
 
 if __name__ == "__main__":
     # A = [1, 2, 3, 4, 5]
-    A = [1, 2, 3, 4, 5, 6, 8]
-    print permcheck(A)
+    A = [
+            [1, 2, 3, 4, 5, 6, 8],  # 1 - not a perm 7 missing
+            [7, 2, 3, 4, 5, 6, 8],  # 1 - not a perm 1 missing#
+            [1, 2, 3, 4, 5, 6, 7]  # 0 - a permutation #
+        ]
+    for perm in A:
+        print "is permutation --> ", perm_check(perm)
